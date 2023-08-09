@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/filecoin-project/go-address"
-	"github.com/masih/telefil"
+	"github.com/filecoin-shipyard/telefil"
 )
 
 func Test(t *testing.T) {

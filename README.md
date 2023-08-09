@@ -1,7 +1,7 @@
 # :satellite: Telefil
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/masih/telefil.svg)](https://pkg.go.dev/github.com/masih/telefil)
-[![Go Test](https://github.com/masih/telefil/actions/workflows/go-test.yml/badge.svg)](https://github.com/masih/telefil/actions/workflows/go-test.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/filecoin-shipyard/telefil.svg)](https://pkg.go.dev/github.com/filecoin-shipyard/telefil)
+[![Go Test](https://github.com/filecoin-shipyard/telefil/actions/workflows/go-test.yml/badge.svg)](https://github.com/filecoin-shipyard/telefil/actions/workflows/go-test.yml)
 
 > Filecoin API client in pure Go
 
@@ -21,7 +21,7 @@ Filecoin API interactions provided by Telefil are:
 ## Installation
 
 ```bash
-go get github.com/masih/telefil@latest
+go get github.com/filecoin-shipyard/telefil@latest
 ```
 
 ## Status
@@ -35,7 +35,7 @@ updating.
 ## Documentation
 
 For detailed usage and integration guidance, please refer
-to [godoc documentation](https://pkg.go.dev/github.com/masih/telefil).
+to [godoc documentation](https://pkg.go.dev/github.com/filecoin-shipyard/telefil).
 
 ## Contribution
 
