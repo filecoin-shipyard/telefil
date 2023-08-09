@@ -1,4 +1,4 @@
-module github.com/masih/telefil
+module github.com/filecoin-shipyard/telefil
 
 go 1.20
 
