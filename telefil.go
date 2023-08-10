@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 
 	"github.com/filecoin-project/go-address"
+	"github.com/filecoin-project/go-state-types/abi"
 	"github.com/filecoin-project/go-state-types/big"
 	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/multiformats/go-multiaddr"
@@ -87,7 +88,7 @@ func (f *Telefil) ChainGetGenesis(ctx context.Context) (*ChainGenesis, error) {
 	}
 }
 
-func (f *Telefil) StateDealProviderCollateralBounds(ctx context.Context, pieceSize uint64, verified bool) (*StateDealProviderCollateralBounds, error) {
+func (f *Telefil) StateDealProviderCollateralBounds(ctx context.Context, pieceSize abi.PaddedPieceSize, verified bool) (*StateDealProviderCollateralBounds, error) {
 	switch resp, err := f.client.Call(ctx, methodFilStateDealProviderCollateralBounds, pieceSize, verified, nil); {
 	case err != nil:
 		return nil, err
