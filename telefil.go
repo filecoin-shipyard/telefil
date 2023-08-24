@@ -7,6 +7,7 @@ import (
 	"github.com/filecoin-project/go-address"
 	"github.com/filecoin-project/go-state-types/abi"
 	"github.com/filecoin-project/go-state-types/big"
+	"github.com/filecoin-project/go-state-types/builtin/v12/market"
 	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/multiformats/go-multiaddr"
 	"github.com/ybbus/jsonrpc/v3"
@@ -19,6 +20,7 @@ const (
 	methodFilStateDealProviderCollateralBounds = `Filecoin.StateDealProviderCollateralBounds`
 	methodFilStateListMiners                   = `Filecoin.StateListMiners`
 	methodFilStateMinerPower                   = `Filecoin.StateMinerPower`
+	methodFilStateMarketStorageDeal            = `Filecoin.StateMarketStorageDeal`
 )
 
 type (
@@ -26,7 +28,7 @@ type (
 		client jsonrpc.RPCClient
 	}
 	ChainHead struct {
-		Height int64 `json:"Height"`
+		Height abi.ChainEpoch `json:"Height"`
 	}
 	ChainGenesis struct {
 		Blocks []struct {
@@ -45,6 +47,10 @@ type (
 	Claim struct {
 		QualityAdjPower big.Int `json:"QualityAdjPower"`
 		RawBytePower    big.Int `json:"RawBytePower"`
+	}
+	StateMarketStorageDeal struct {
+		Proposal market.DealProposal `json:"Proposal"`
+		State    market.DealState    `json:"State"`
 	}
 )
 
@@ -172,5 +178,20 @@ func (f *Telefil) StateListMiners(ctx context.Context) ([]address.Address, error
 			return nil, err
 		}
 		return mids, nil
+	}
+}
+
+func (f *Telefil) StateMarketStorageDeal(ctx context.Context, id abi.DealID) (*StateMarketStorageDeal, error) {
+	switch resp, err := f.client.Call(ctx, methodFilStateMarketStorageDeal, id, nil); {
+	case err != nil:
+		return nil, err
+	case resp.Error != nil:
+		return nil, resp.Error
+	default:
+		var deal StateMarketStorageDeal
+		if err = resp.GetObject(&deal); err != nil {
+			return nil, err
+		}
+		return &deal, nil
 	}
 }
