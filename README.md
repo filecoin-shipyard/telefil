@@ -17,6 +17,7 @@ Filecoin API interactions provided by Telefil are:
 - **`Filecoin.StateDealProviderCollateralBounds`**
 - **`Filecoin.StateListMiners`**
 - **`Filecoin.StateMinerPower`**
+- **`Filecoin.StateMarketStorageDeal`**
 
 ## Installation
 
